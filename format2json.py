@@ -68,16 +68,18 @@ def main():
                 1. 遇到 '{' 和 '[' 入栈；
                 2. 遇到 '}' 和 ']' 出栈；
                 3. 根据 itemStatus == 0 判断一个 item 的开始；
-                4. 根据栈为空判断一个 item 的结束
+                4. 根据栈为空判断一个 item 的结束。
                 """
+
                 for char in lineStrip:
 
                     colNum = colNum + 1
 
-                    '''
-                    itemStatus == 0，标志着一个 item 的开始，此时期待一个 '{'
-                    '''
                     if itemStatus == 0:
+
+                        """
+                        itemStatus == 0，标志着一个 item 的开始，此时期待一个 '{'
+                        """
 
                         if char == '{':
                             # 入栈
@@ -86,15 +88,16 @@ def main():
                             # 一个 item 开始了
                             itemStatus = 1
 
-                            itemJson = char;
-
-                    '''
-                    itemStatus == 1，代表正在一个 item 内，
-                    1. 遇到 '{' 和 '[' 入栈；
-                    2. 遇到 '}' 和 ']' 出栈；
-                    3. 遇到 '}'、'{' 出栈后，如果栈内为空，则证明一个 item 结束了
-                    '''
+                            itemJson = char
+                    
                     elif itemStatus == 1:
+                        
+                        """
+                        itemStatus == 1，代表正在一个 item 内，
+                        1. 遇到 '{' 和 '[' 入栈；
+                        2. 遇到 '}' 和 ']' 出栈；
+                        3. 遇到 '}'、'{' 出栈后，如果栈内为空，则证明一个 item 结束了。
+                        """
 
                         itemJson = itemJson + char
 
